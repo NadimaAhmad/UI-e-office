@@ -6,42 +6,42 @@ const cors = require("cors");
 const app = express();
 const port = 3000;
 
-// Middleware
 app.use(cors());
 app.use(bodyParser.json());
 
-let products = []; // Simpan data sementara di memory
+let videos = [];
 let idCounter = 1;
 
 // CREATE
-app.post("/products", (req, res) => {
-  const { name, price } = req.body;
-  const newProduct = { id: idCounter++, name, price };
-  products.push(newProduct);
-  res.status(201).json(newProduct);
+app.post("/videos", (req, res) => {
+  const { title, url, description } = req.body;
+  const newVideo = { id: idCounter++, title, url, description };
+  videos.push(newVideo);
+  res.status(201).json(newVideo);
 });
 
 // READ
-app.get("/products", (req, res) => {
-  res.json(products);
+app.get("/videos", (req, res) => {
+  res.json(videos);
 });
 
 // UPDATE
-app.put("/products/:id", (req, res) => {
+app.put("/videos/:id", (req, res) => {
   const id = parseInt(req.params.id);
-  const { name, price } = req.body;
-  const product = products.find((p) => p.id === id);
-  if (!product) return res.status(404).json({ message: "Not Found" });
+  const { title, url, description } = req.body;
+  const video = videos.find((v) => v.id === id);
+  if (!video) return res.status(404).json({ message: "Not Found" });
 
-  product.name = name;
-  product.price = price;
-  res.json(product);
+  video.title = title;
+  video.url = url;
+  video.description = description;
+  res.json(video);
 });
 
 // DELETE
-app.delete("/products/:id", (req, res) => {
+app.delete("/videos/:id", (req, res) => {
   const id = parseInt(req.params.id);
-  products = products.filter((p) => p.id !== id);
+  videos = videos.filter((v) => v.id !== id);
   res.json({ message: "Deleted" });
 });
 
