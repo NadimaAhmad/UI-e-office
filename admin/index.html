@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CRUD Video</title>
+  <style>
+    form { margin-bottom: 20px; }
+    video { max-width: 300px; display: block; margin: 10px 0; }
+  </style>
+</head>
+<body>
+  <h1>CRUD Video</h1>
+
+  <form id="videoForm">
+    <input type="hidden" id="videoId">
+    <input type="text" id="title" placeholder="Judul Video" required>
+    <input type="text" id="url" placeholder="URL Video" required>
+    <input type="text" id="description" placeholder="Deskripsi">
+    <button type="submit">Simpan</button>
+  </form>
+
+  <h2>Daftar Video</h2>
+  <ul id="videoList"></ul>
+
+  <script>
+    const API_URL = "http://localhost:3000/videos";
+    const form = document.getElementById("videoForm");
+    const videoList = document.getElementById("videoList");
+    const titleInput = document.getElementById("title");
+    const urlInput = document.getElementById("url");
+    const descInput = document.getElementById("description");
+    const idInput = document.getElementById("videoId");
+
+    async function loadVideos() {
+      const res = await fetch(API_URL);
+      const data = await res.json();
+      videoList.innerHTML = "";
+      data.forEach(video => {
+        const li = document.createElement("li");
+
+        const title = document.createElement("h3");
+        title.textContent = video.title;
+
+        const desc = document.createElement("p");
+        desc.textContent = video.description || "-";
+
+        const videoElement = document.createElement("video");
+        videoElement.src = video.url;
+        videoElement.controls = true;
+
+        const editBtn = document.createElement("button");
+        editBtn.textContent = "Edit";
+        editBtn.onclick = () => {
+          idInput.value = video.id;
+          titleInput.value = video.title;
+          urlInput.value = video.url;
+          descInput.value = video.description;
+        };
+
+        const delBtn = document.createElement("button");
+        delBtn.textContent = "Hapus";
+        delBtn.onclick = async () => {
+          await fetch(`${API_URL}/${video.id}`, { method: "DELETE" });
+          loadVideos();
+        };
+
+        li.appendChild(title);
+        li.appendChild(videoElement);
+        li.appendChild(desc);
+        li.append(editBtn, delBtn);
+        videoList.appendChild(li);
+      });
+    }
+
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+      const id = idInput.value;
+      const payload = {
+        title: titleInput.value,
+        url: urlInput.value,
+        description: descInput.value
+      };
+
+      if (id) {
+        await fetch(`${API_URL}/${id}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+      } else {
+        await fetch(API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+      }
+
+      form.reset();
+      loadVideos();
+    };
+
+    loadVideos();
+  </script>
+</body>
+</html>
