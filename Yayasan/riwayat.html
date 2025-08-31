@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Slicing UI aplikasi LPMII UPI YPTK: tampilan dashboard, navigasi, dan modul mutu kampus berbasis Bootstrap untuk pengalaman pengguna yang modern dan responsif.">
+  <meta property="og:image" content="https://www.upiyptk.ac.id/imagefile/icon/upiyptk">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+  <link rel="stylesheet" href="../style.css">
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+
+  <title>FE E-Office riwayat</title>
+</head>
+
+<style>
+  p {
+    padding: 0;
+    margin: 0;
+  }
+
+  .btn-success {
+    background-color: #1FC16B !important;
+    border: none;
+    color: rgb(255, 255, 255) !important;
+  }
+
+  .btn-danger {
+    background-color: #FF4C61 !important;
+    border: none;
+    color: rgb(255, 255, 255) !important;
+  }
+
+  .btn-secondary {
+    background-color: #acb0b4 !important;
+    border: none;
+    color: rgb(255, 255, 255) !important;
+  }
+
+  .btn-warning,
+  .bg-warning {
+    background-color: #ff8c00 !important;
+    border: none;
+    color: rgb(255, 255, 255) !important;
+  }
+
+
+  .btn-hover:hover {
+    background-color: #fff89d;
+    font-weight: bolder;
+  }
+
+
+
+  .fit {
+    width: fit-content;
+  }
+</style>
+
+<body class="bg-body-tertiary jkt-font">
+
+  <div class="container-fluid position-relative p-0 m-0">
+    <div class="row">
+      <!-- Navbar / Trigger untuk Mobile -->
+      <nav class="navbar navbar-light bg-white shadow-sm fixed-top d-lg-none">
+        <div class="container-fluid">
+          <button class="btn btn-outline-dark" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#sidebarOffcanvas">
+            <i class="bi bi-list"></i>
+          </button>
+          <span class="navbar-brand ms-2">E-Office</span>
+        </div>
+      </nav>
+
+      <!-- navbar desktop -->
+      <div class="d-none d-lg-block position-fixed h-100 bg-white shadow-sm p-3" style="width: 250px;">
+        <div class="mb-4 text-start ms-3">
+          <!-- <img src="https://www.upiyptk.ac.id/imagefile/icon/upiyptk" height="50" alt="Logo"> -->
+          <p class="display-6 fw-bold">E-Office </p>
+          <p>UPI YPTK PADANG</p>
+        </div>
+
+        <nav class="nav flex-column">
+          <a href="#" class="nav-link pkecil btn-hover py-3 ms-2 btn btn-hover   active d-flex align-items-center gap-2 ">
+            <i class="bi bi-window-desktop"></i> Dashboard
+          </a>
+          <div class="nav-item dropdown">
+            <a class="nav-link pkecil  py-3 ms-2 btn btn-hover btn-warning d-flex align-items-center gap-2 text-muted dropdown-toggle"
+              href="#" id="suratDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-mailbox"></i> Surat Menyurat
+            </a>
+            <ul class="dropdown-menu w-100 shadow-sm border-0" aria-labelledby="suratDropdown">
+              <li>
+                <a class="dropdown-item pkecil ms-3" href="#">
+                  <i class="bi bi-check2-circle me-2"></i>Persetujuan
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item pkecil ms-3" href="#">
+                  <i class="bi bi-clock-history me-2"></i>Riwayat
+                </a>
+              </li>
+            </ul>
+          </div>
+          <a href="#" class="nav-link pkecil btn-hover py-3 ms-2 btn btn-hover   active d-flex align-items-center gap-2 ">
+            <i class="bi bi-window-desktop"></i> Invoice
+          </a>
+          <a href="#" class="nav-link pkecil btn-hover py-3 ms-2 btn btn-hover   active d-flex align-items-center gap-2 ">
+            <i class="bi bi-people"></i> Karir
+          </a>
+        </nav>
+
+
+      </div>
+
+      <!-- Offcanvas Sidebar (Mobile)
+      <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarOffcanvas">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title">E-Office</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body p-0">
+          <nav class="nav flex-column px-3">
+            <a href="#" class="nav-link pkecil btn-hover ms-2 btn active d-flex align-items-center gap-2 text-dark">
+              <i class="bi bi-speedometer2"></i> Dashboard
+            </a>
+            <a href="#" class="nav-link pkecil btn-hover ms-2 btn d-flex align-items-center gap-2 text-muted">
+              <i class="bi bi-mailbox"></i> Surat Menyurat
+            </a>
+
+            <hr>
+
+            <small class="fw-bold text-uppercase text-muted"></small>
+
+            <a href="#" class="nav-link pkecil btn-hover ms-2 btn d-flex align-items-center gap-2 text-danger">
+              <i class="bi bi-box-arrow-right"></i> Keluar
+            </a>
+          </nav>
+        </div>
+      </div> -->
+
+      <div class="col-lg-2 col-md-3 col-2 d-lg-block d-none"></div>
+      <!-- batas -->
+      <div class="col ps-5 overflow-y-scroll pe-5 ">
+        <div class=" px-3 d-flex flex-row  align-items-center  justify-content-between mt-3">
+          <input type="text" class="form-control w-50 shadow-sm" placeholder="Cari...">
+          <div class="d-flex gap-2">
+            <div class="bg-white px-3 py-2 shadow-sm rounded-3">
+              <i class="bi bi-bell fs-4"></i>
+            </div>
+            <div class="bg-white px-3 py-2 shadow-sm  rounded-3" style="width: 250px;">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex gap-2">
+
+                  <img src="https://i.pinimg.com/736x/eb/76/a4/eb76a46ab920d056b02d203ca95e9a22.jpg" width="40px"
+                    class="rounded-2 me-2" alt="">
+                  <div class="">
+                    <p class="p pkecil fw-bold">nama</p>
+                    <p class="pkecil" style="margin-top: -3px;">role</p>
+                  </div>
+                </div>
+                <i class="bi bi-chevron-down"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+<!-- riwayat -->
+        <div class="container-fluid mt-3">
+          <!--  dashboard -->
+          <div class="" id="">
+            <div class="banner pt-3 px-4  ">
+              <div class="d-flex justify-content-between align-items-center">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item "><a href="#" class="text-muted d-flex gap-2"> <i
+                          class="bi bi-envelope-fill"></i> Surat Menyurat </a></li>
+                    <li class="breadcrumb-item active text-danger fw-bold" aria-current="page">Riwayat</li>
+                  </ol>
+                </nav>
+              </div>
+            </div>
+
+            <div class="container-fluid ">
+              <!--  dashboard -->
+              <div class="" id="dashboard">
+
+                <div class="row">
+                  <div class="col">
+                    <!-- card Surat yang diajukan -->
+                    <div class="container-fluid   p-4">
+                      <div class="row   ">
+                        <div class="col bg-white  border-bottom border-top rounded-top-4 px-4  pt-3">
+                          <div class="d-flex justify-content-between align-items-center pb-3">
+                            <div class="d-flex justify-content-between w-100 align-items-center">
+                              <p class="fw-bold ">Riwayat Keputusan</p>
+                              <form action="" method="post" class="">
+                                <input type="text" class="form-control  pkecil" name="" id=""
+                                  placeholder=" Cari berdasarkan keperluan surat">
+                              </form>
+
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                      
+
+                      <!-- card buka -->
+                      <div class="row  bg-white border-bottom px-4   ">
+                        <div class="col ">
+                          <table class="table table-borderless table-hover mt-3">
+                            <thead>
+                              <tr class="fw-bold rounded-4   fs-6   ">
+
+                                <td class="">Keperluan</td>
+                                <td class="">Detail</td>
+                                <td class="">Peran</td>
+                                <td class="">Pengaju</td>
+                                <td class="">Ditetapkan</td>
+
+                                <td class="text-center">Aksi</td>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr class="small ">
+                                
+                                <td class="">Surat Aktif Kuliah</td>
+                                <td>Mendaftar Beasiswa</td>
+                                <td>Mahasiswa</td>
+                                <td>VICKY JANUFER WARDANA</td>
+                                <td>01-08-2025</td>
+
+                                <td class="">
+                                  <div class="d-flex gap-2 justify-content-center ">
+
+                                    <a href="" class="btn btn-sm btn-success d-flex gap-2 ">Disetujui<i
+                                        class="bi bi-check-circle"></i></a>
+                                   
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr class="small ">
+                                
+                                <td class="">Surat Aktif Kuliah</td>
+                                <td>Mendaftar Beasiswa</td>
+                                <td>Mahasiswa</td>
+                                <td>VICKY JANUFER WARDANA</td>
+                                <td>01-08-2025</td>
+
+                                <td class="">
+                                  <div class="d-flex gap-2 justify-content-center ">
+
+                                    <a href="" class="btn btn-sm btn-danger d-flex gap-2 ">Ditolak<i
+                                        class="bi bi-x-circle"></i></a>
+                                  </div>
+                                </td>
+                              </tr>
+                              
+
+
+                            </tbody>
+                          </table>
+
+                        </div>
+                      </div>
+                      <!-- card footer -->
+                      <div class="row bg-white py-3 rounded-bottom-4 px-4 shadow-sm border-bottom  ">
+                        <div class="col">
+                          <!-- footer angka -->
+                          <div class="d-flex justify-content-between mt-0 pkecil">
+                            <small class="text-muted">Menampilkan 7 dari 100 hasil</small>
+                            <div class="d-flex border border-opacity-50">
+                              <div class=""><i class="bi bi-chevron-left"></i></div>
+                              <div class="border px-2">
+                                <p>1</p>
+                              </div>
+                              <div class="border px-2">
+                                <p>2</p>
+                              </div>
+                              <div class="border px-2">
+                                <p>3</p>
+                              </div>
+                              <div class="border px-2">
+                                <p>...</p>
+                              </div>
+                              <div class="border px-2">
+                                <p>50</p>
+                              </div>
+                              <div class=""><i class="bi bi-chevron-right"></i></div>
+                            </div>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+
+        </div>
+      </div>
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+      integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+      crossorigin="anonymous"></script>
+
+
+
+</body>
+
+</html>
