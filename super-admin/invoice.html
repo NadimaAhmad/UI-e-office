@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Admin - Manajemen Invoice</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+      .btn-warning, .bg-warning {
+        background-color: #ff8c00 !important;
+        border: none;
+        color: rgb(255, 255, 255) !important;
+      }
+      .nav-link.active {
+        background-color: #ff8c00 !important;
+        color: white !important;
+      }
+      .btn-hover:hover {
+        background-color: #fff89d;
+        font-weight: bolder;
+      }
+      .nav-tabs .nav-link.active {
+        color: #ff8c00;
+        border-bottom: 2px solid #ff8c00;
+        font-weight: bold;
+      }
+      .nav-tabs .nav-link { color: #6c757d; }
+    </style>
+</head>
+<body class="bg-body-tertiary jkt-font">
+
+<div class="container-fluid position-relative p-0 m-0">
+    <div class="row g-0">
+      <div class="d-none d-lg-block position-fixed h-100 bg-white shadow-sm p-3" style="width: 250px;">
+        <div class="mb-4 text-start ms-3">
+          <p class="fs-5 fw-bold">E-OFFICE</p>
+          <p class="pkecil">UPI YPTK</p>
+        </div>
+        <nav class="nav flex-column">
+          <a href="index.html" class="nav-link pkecil py-3 ms-2 btn btn-hover d-flex align-items-center gap-2 text-muted">
+            <i class="bi bi-house-door-fill"></i> Dashboard
+          </a>
+          <a href="manajemen-surat.html" class="nav-link pkecil py-3 ms-2 btn btn-hover d-flex align-items-center gap-2 text-muted">
+            <i class="bi bi-envelope"></i> Manajemen Surat
+          </a>
+          <a href="invoice.html" class="nav-link pkecil py-3 ms-2 btn active d-flex align-items-center gap-2">
+            <i class="bi bi-receipt-cutoff"></i> Invoice
+          </a>
+           <a href="#" class="nav-link pkecil py-3 ms-2 btn btn-hover d-flex align-items-center gap-2 text-muted">
+            <i class="bi bi-briefcase"></i> Karir
+          </a>
+           <a href="#" class="nav-link pkecil py-3 ms-2 btn btn-hover d-flex align-items-center gap-2 text-muted">
+            <i class="bi bi-people-fill"></i> Manajemen User
+          </a>
+        </nav>
+      </div>
+
+      <div class="col-lg-2 d-none d-lg-block"></div>
+      <div class="col ps-lg-5 pe-lg-5 p-3">
+        <div class="d-flex justify-content-between align-items-center mt-3">
+            <div class="w-50"><input type="text" class="form-control bg-body-tertiary" placeholder="&#xF52A; Search"></div>
+            <div class="d-flex gap-3 align-items-center">
+                <i class="bi bi-bell fs-4"></i>
+                <div class="d-flex gap-2 align-items-center">
+                    <img src="https://i.pinimg.com/736x/eb/76/a4/eb/76a46ab920d056b02d203ca95e9a22.jpg" width="40px" height="40px" class="rounded-circle">
+                    <div><p class="p pkecil fw-bold">Super Admin</p><p class="pkecil" style="margin-top: -3px;">Super Admin</p></div>
+                    <i class="bi bi-chevron-down"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid mt-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="fs-6 fw-bold d-flex align-items-center gap-2"><i class="bi bi-receipt-cutoff text-danger"></i> Invoice</p>
+                    <p class="fs-4 mt-2 fw-bold">Manajemen Invoice</p>
+                    <p class="mt-1">Pantau dan kelola semua transaksi keuangan dalam sistem E-Office.</p>
+                </div>
+                <button class="btn btn-warning fw-bold">+ Buat Invoice Baru</button>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center mt-4">
+                <p class="fw-bold">Ringkasan</p>
+                <select class="form-select w-auto"><option>Bulan ini</option></select>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-4"><div class="bg-white p-4 rounded-4 shadow-sm"><p class="text-muted fw-bold">Invoice Baru</p><p class="display-5 fw-bold mt-2">5</p></div></div>
+                <div class="col-md-4"><div class="bg-white p-4 rounded-4 shadow-sm"><p class="text-muted fw-bold">Total Dicairkan</p><p class="display-5 fw-bold mt-2">Rp. 110.000.000</p></div></div>
+                <div class="col-md-4"><div class="bg-white p-4 rounded-4 shadow-sm"><p class="text-muted fw-bold">Butuh Persetujuan</p><p class="display-5 fw-bold mt-2">1 Invoice</p></div></div>
+            </div>
+
+            <div class="bg-white p-4 mt-4 rounded-4 shadow-sm">
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="fw-bold fs-5">Semua Invoice</p>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-outline-warning"><i class="bi bi-download"></i> PDF</button>
+                        <button class="btn btn-outline-success"><i class="bi bi-download"></i> Excel</button>
+                    </div>
+                </div>
+                <div class="d-flex gap-3 mt-3">
+                    <input type="text" class="form-control" placeholder="Cari...">
+                    <select class="form-select"><option>Status</option></select>
+                </div>
+                <table class="table table-borderless table-hover mt-3">
+                    <thead class="table-primary"><tr class="align-middle"><th>ID Invoice</th><th>Tipe</th><th>Keterangan</th><th>Pengaju</th><th>Jumlah</th><th>Tanggal</th><th>Status</th><th class="text-center">Aksi</th></tr></thead>
+                    <tbody>
+                        <tr class="align-middle"><td>INV-001</td><td>Konsumsi</td><td>Konsumsi Daurah Al-Fatihah</td><td>Wakil Rektor II</td><td>Rp2.500.000</td><td>01-08-2025</td><td>Dicairkan</td>
+                            <td class="text-center"><div class="btn-group"><button class="btn btn-warning btn-sm dropdown-toggle" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></button><ul class="dropdown-menu"><li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#detailInvoiceModal">Lihat Detail</a></li></ul></div></td></tr>
+                        <tr class="align-middle"><td>INV-002</td><td>Perj. Dinas</td><td>Perjalanan Dinas Dosen A</td><td>SDM</td><td>Rp1.750.000</td><td>01-08-2025</td><td>Butuh Persetujuan</td>
+                            <td class="text-center"><div class="btn-group"><button class="btn btn-warning btn-sm dropdown-toggle" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></button><ul class="dropdown-menu"><li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#detailInvoiceModal">Lihat Detail</a></li><li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editInvoiceModal">Edit Transaksi</a></li><li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#intervensiInvoiceModal">Intervensi</a></li><li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#batalkanInvoiceModal">Batalkan</a></li></ul></div></td></tr>
+                    </tbody>
+                </table>
+                 <div class="d-flex justify-content-between align-items-center mt-3 pkecil"><small class="text-muted">Halaman 1 dari 3, Total Data: xx</small><nav><ul class="pagination pagination-sm mb-0"> ... </ul></nav></div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="detailInvoiceModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header"><h5 class="modal-title">Detail Invoice: INV-001 (Konsumsi Daurah Al-Fatihah)</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <ul class="nav nav-tabs"><li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#info-tab-pane">Informasi</button></li><li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#riwayat-tab-pane">Riwayat</button></li></ul>
+        <div class="tab-content">
+          <div class="tab-pane fade show active p-3" id="info-tab-pane">
+            <div class="row mb-2"><div class="col-4 text-muted">ID Invoice</div><div class="col-8">INV-001</div></div>
+            <div class="row mb-2"><div class="col-4 text-muted">Tipe</div><div class="col-8">Konsumsi</div></div>
+            <div class="row mb-2"><div class="col-4 text-muted">Pengaju</div><div class="col-8">Wakil Rektor II</div></div>
+            <div class="row mb-2"><div class="col-4 text-muted">Jumlah</div><div class="col-8">Rp2.500.000</div></div>
+            <div class="row mb-2"><div class="col-4 text-muted">Status</div><div class="col-8">Dicairkan</div></div>
+            <hr>
+            <p class="text-muted">Dokumen</p>
+            <div class="d-flex justify-content-between align-items-center border p-2 rounded mb-2"><span><i class="bi bi-file-earmark-pdf"></i> proposal_kegiatan.pdf</span><div><a href="#" class="btn btn-sm btn-outline-warning">Unduh</a> <a href="#" class="btn btn-sm btn-warning">Pratinjau</a></div></div>
+            <div class="d-flex justify-content-between align-items-center border p-2 rounded"><span><i class="bi bi-file-excel"></i> rincian_dana.xlsx</span><div><a href="#" class="btn btn-sm btn-outline-warning">Unduh</a> <a href="#" class="btn btn-sm btn-warning">Pratinjau</a></div></div>
+          </div>
+          <div class="tab-pane fade p-3" id="riwayat-tab-pane">
+            <ul class="list-unstyled">
+                <li class="mb-3"><strong>01-08-2025 10:22</strong> | Staf Sarpras A Menyetujui Invoice</li>
+                <li class="mb-3"><strong>03-08-2025 10:12</strong> | Wakil Rektor II Menyetujui Invoice</li>
+                <li class="mb-3"><strong>Status saat ini</strong> | Menunggu validasi Rektor</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editInvoiceModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header"><h5 class="modal-title">Edit Transaksi Invoice : INV-001</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body">
+        <div class="alert alert-warning d-flex align-items-center"><i class="bi bi-exclamation-triangle-fill me-2"></i><div>Anda mengedit sebagai Super Admin. Perubahan ini akan dicatat dalam log sistem.</div></div>
+        <div class="mb-3"><label class="form-label">Keterangan</label><input type="text" class="form-control" value="Konsumsi Daurah Al-Fatihah"></div>
+        <div class="mb-3"><label class="form-label">Jumlah (Rp)</label><input type="number" class="form-control" value="7000000"></div>
+        <div class="mb-3"><label class="form-label">Alasan Perubahan*</label><textarea class="form-control" rows="3">Koreksi salah input jumlah awal.</textarea></div>
+      </div>
+      <div class="modal-footer"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button><button type="button" class="btn btn-warning">Simpan Perubahan</button></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="intervensiInvoiceModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body p-4">
+          <div class="text-center"><i class="bi bi-exclamation-triangle-fill text-warning display-5"></i><h5 class="mt-3">Tindakan Super Admin</h5></div>
+          <p class="mt-3">Invoice : INV-001 - Konsumsi Daurah Al-Fatihah<br>Posisi Saat Ini : Menunggu Validasi Yayasan</p><hr>
+          <form>
+              <div class="mb-3"><label class="form-label fw-bold">Lanjutkan / Pindahkan Langsung ke Tahap :</label>
+                  <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Menunggu Persetujuan Wakil Rektor II</label></div>
+                  <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Menunggu Persetujuan Rektor</label></div>
+                  <div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Menunggu Persetujuan Ketua Yayasan</label></div>
+              </div>
+              <div class="d-flex gap-4"><div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Langsung Cairkan</label></div><div class="form-check"><input class="form-check-input" type="checkbox"><label class="form-check-label">Langsung Tolak</label></div></div>
+              <div class="mt-3"><label class="form-label fw-bold">Alasan Intervensi* :</label><textarea class="form-control" rows="3" placeholder="Tulis alasan penolakan, misal: Kebutuhan mendesak, proses validasi perlu dipercepat."></textarea></div>
+          </form>
+        </div>
+        <div class="modal-footer border-0 justify-content-end"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button><button type="button" class="btn btn-warning">Konfirmasi Intervensi</button></div>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="batalkanInvoiceModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body text-center p-4">
+        <i class="bi bi-exclamation-triangle-fill text-warning display-4"></i>
+        <h5 class="mt-3">Tindakan Tidak Dapat Diurungkan</h5>
+        <p>Anda yakin ingin MEMBATALKAN invoice : "Konsumsi Daurah Al-Fatihah" (INV-001)?</p>
+        <div class="mt-3 text-start"><label class="form-label fw-bold">Alasan Pembatalan* :</label><textarea class="form-control" rows="3" placeholder="Tulis alasan pembatalan, misal: Pengajuan ganda, sudah ada invoice lain."></textarea></div>
+      </div>
+      <div class="modal-footer border-0 justify-content-center"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Jangan Batalkan</button><button type="button" class="btn btn-warning">Ya, Batalkan Transaksi</button></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

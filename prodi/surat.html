@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Halaman persetujuan surat E-Office untuk Program Studi (Prodi) UPI YPTK Padang.">
+  <meta property="og:image" content="https://www.upiyptk.ac.id/imagefile/icon/upiyptk">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+  <link rel="stylesheet" href="../style.css">
+
+
+  <title>FE E-Office - Persetujuan Prodi</title>
+</head>
+
+<style>
+  p {
+    padding: 0;
+    margin: 0;
+  }
+
+  .btn-warning,
+  .bg-warning,
+  .dropdown-item.active {
+    background-color: #ff8c00 !important;
+    border: none;
+    color: rgb(255, 255, 255) !important;
+  }
+
+  .btn-success {
+    background-color: #1FC16B !important;
+    border: none;
+    color: rgb(255, 255, 255) !important;
+  }
+
+  .btn-danger {
+    background-color: #FF4C61 !important;
+    border: none;
+    color: rgb(255, 255, 255) !important;
+  }
+  
+  .btn-secondary {
+    background-color: #acb0b4 !important;
+    border: none;
+    color: rgb(255, 255, 255) !important;
+  }
+
+  .btn-hover:hover {
+    background-color: #fff89d;
+    font-weight: bolder;
+  }
+
+  .dropdown-item:hover {
+      background-color: #fff89d !important;
+  }
+
+</style>
+
+<body class="bg-body-tertiary jkt-font">
+
+  <div class="container-fluid position-relative p-0 m-0">
+    <div class="row g-0">
+      <div class="d-none d-lg-block position-fixed h-100 bg-white shadow-sm p-3" style="width: 250px;">
+        <div class="mb-4 text-start ms-3">
+          <p class="fs-5 fw-bold">E-OFFICE</p>
+          <p class="pkecil">UPI YPTK</p>
+        </div>
+
+        <nav class="nav flex-column">
+          <a href="index.html" class="nav-link pkecil py-3 ms-2 btn btn-hover d-flex align-items-center gap-2">
+            <i class="bi bi-house-door-fill"></i> Dashboard
+          </a>
+          <div class="nav-item dropdown">
+            <a class="nav-link pkecil py-3 ms-2 btn btn-warning d-flex align-items-center gap-2 dropdown-toggle"
+              href="surat.html" id="suratDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="true">
+              <i class="bi bi-envelope-fill"></i> Surat Menyurat
+            </a>
+            <ul class="dropdown-menu w-100 shadow-sm border-0 show" aria-labelledby="suratDropdown">
+              <li>
+                <a class="dropdown-item pkecil ms-3 active" href="surat.html">
+                  <i class="bi bi-check2-circle me-2"></i>Persetujuan
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item pkecil ms-3" href="riwayat.html">
+                  <i class="bi bi-clock-history me-2"></i>Riwayat
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+      <div class="col-lg-2 col-md-3 col-2 d-lg-block d-none"></div>
+      <div class="col ps-lg-5 pe-lg-5 p-3">
+        <div class="d-flex justify-content-between align-items-center mt-3">
+            <div class="w-50">
+                <input type="text" class="form-control" placeholder="&#xF52A; Search">
+            </div>
+            <div class="d-flex gap-3 align-items-center">
+                <i class="bi bi-bell fs-4"></i>
+                <div class="d-flex gap-2 align-items-center">
+                    <img src="https://i.pinimg.com/736x/eb/76/a4/eb76a46ab920d056b02d203ca95e9a22.jpg" width="40px" height="40px" class="rounded-circle" alt="">
+                    <div>
+                        <p class="p pkecil fw-bold">Dr. Rini Sovia</p>
+                        <p class="pkecil" style="margin-top: -3px;">Prodi</p>
+                    </div>
+                    <i class="bi bi-chevron-down"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid mt-4">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="#" class="text-muted">Surat Menyurat</a></li>
+                  <li class="breadcrumb-item active text-dark fw-bold" aria-current="page">Persetujuan</li>
+                </ol>
+            </nav>
+
+            <div class="bg-white p-4 mt-4 rounded-4 shadow-sm">
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="fw-bold fs-5">Daftar Permintaan Persetujuan</p>
+                    <div class="input-group w-50">
+                        <input type="text" class="form-control" placeholder="Cari berdasarkan keperluan surat atau nama pengaju">
+                        <span class="input-group-text"><i class="bi bi-search"></i></span>
+                    </div>
+                </div>
+
+                <div id="selectionActionBar" class="d-none align-items-center gap-3 mt-4 p-2 rounded-3" style="background-color: #f8f9fa;">
+                    <div class="fw-bold d-flex align-items-center gap-2">
+                        <i class="bi bi-check-square-fill"></i> <span id="selectedCount">0</span> Surat Terpilih
+                    </div>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-sm btn-success px-3">Setujui</button>
+                        <button class="btn btn-sm btn-danger px-3">Tolak</button>
+                        <button class="btn btn-sm btn-secondary px-3">Batal</button>
+                    </div>
+                </div>
+
+                <table class="table table-borderless table-hover mt-3">
+                    <thead class="table-primary">
+                        <tr class="align-middle">
+                            <th width="5%"><input type="checkbox" class="form-check-input" id="selectAllCheckbox"></th>
+                            <th>Keperluan Surat</th>
+                            <th>Detail</th>
+                            <th>Pengaju</th>
+                            <th>Tanggal Masuk</th>
+                            <th class="text-center">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="align-middle">
+                            <td><input type="checkbox" class="form-check-input item-checkbox"></td>
+                            <td>Surat Aktif Kuliah</td>
+                            <td>Mendaftar Beasiswa</td>
+                            <td>VICKY JANUFER WARDANA</td>
+                            <td>01-08-2025</td>
+                            <td class="text-center">
+                                <button class="btn btn-success btn-sm">Setujui</button>
+                                <button class="btn btn-danger btn-sm">Tolak</button>
+                            </td>
+                        </tr>
+                        <tr class="align-middle">
+                            <td><input type="checkbox" class="form-check-input item-checkbox"></td>
+                            <td>Surat Pengantar Tugas/ PKL</td>
+                            <td>PKL di PT. Semen Padang</td>
+                            <td>ILHAM JANUAR</td>
+                            <td>01-08-2025</td>
+                            <td class="text-center">
+                                <button class="btn btn-success btn-sm">Setujui</button>
+                                <button class="btn btn-danger btn-sm">Tolak</button>
+                            </td>
+                        </tr>
+                        <tr class="align-middle">
+                            <td><input type="checkbox" class="form-check-input item-checkbox"></td>
+                            <td>Surat Aktif Kuliah</td>
+                            <td>Mendaftar Beasiswa</td>
+                            <td>VICKY JANUFER WARDANA</td>
+                            <td>01-08-2025</td>
+                            <td class="text-center">
+                                <button class="btn btn-success btn-sm">Setujui</button>
+                                <button class="btn btn-danger btn-sm">Tolak</button>
+                            </td>
+                        </tr>
+                         <tr class="align-middle">
+                            <td><input type="checkbox" class="form-check-input item-checkbox"></td>
+                            <td>Surat Pengantar Tugas/ PKL</td>
+                            <td>PKL di PT. Semen Padang</td>
+                            <td>ILHAM JANUAR</td>
+                            <td>01-08-2025</td>
+                            <td class="text-center">
+                                <button class="btn btn-success btn-sm">Setujui</button>
+                                <button class="btn btn-danger btn-sm">Tolak</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="d-flex justify-content-between align-items-center mt-3 pkecil">
+                    <small class="text-muted">Halaman 1 dari 3, Total Data: xx</small>
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination pagination-sm mb-0">
+                          <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                              <span aria-hidden="true">&laquo;</span>
+                            </a>
+                          </li>
+                          <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                          <li class="page-item"><a class="page-link" href="#">2</a></li>
+                          <li class="page-item"><a class="page-link" href="#">3</a></li>
+                          <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                              <span aria-hidden="true">&raquo;</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </nav>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+    integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+    crossorigin="anonymous"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const selectAllCheckbox = document.getElementById('selectAllCheckbox');
+        const itemCheckboxes = document.querySelectorAll('.item-checkbox');
+        const selectionActionBar = document.getElementById('selectionActionBar');
+        const selectedCount = document.getElementById('selectedCount');
+
+        function updateActionBar() {
+            const checkedItems = document.querySelectorAll('.item-checkbox:checked');
+            const count = checkedItems.length;
+
+            if (count > 0) {
+                selectedCount.textContent = count;
+                selectionActionBar.classList.remove('d-none');
+                selectionActionBar.classList.add('d-flex');
+            } else {
+                selectionActionBar.classList.add('d-none');
+                selectionActionBar.classList.remove('d-flex');
+            }
+            
+            // Update state of "select all" checkbox
+            selectAllCheckbox.checked = count > 0 && count === itemCheckboxes.length;
+        }
+
+        selectAllCheckbox.addEventListener('change', function () {
+            itemCheckboxes.forEach(checkbox => {
+                checkbox.checked = selectAllCheckbox.checked;
+            });
+            updateActionBar();
+        });
+
+        itemCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', updateActionBar);
+        });
+
+        // Initial check in case of page refresh with checked items
+        updateActionBar();
+    });
+  </script>
+
+</body>
+
+</html>
